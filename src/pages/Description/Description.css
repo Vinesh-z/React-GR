@@ -1,0 +1,89 @@
+.blogName {
+    font-weight: bold;
+    font-family: 'Gruppo', cursive;
+}
+
+.display-image {
+    object-fit: fill;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 30rem;
+}
+
+.blogDetails {
+    text-align: center;
+}
+
+.catName {
+    color: #0066ff;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+.author {
+    text-transform: capitalize;
+    font-family: ProximaNova, "Noto Sans KR" sans-serif;
+    font-weight: 500;
+    text-align: left;
+}
+
+.authorName {
+    font-family: ProximaNova, "Noto Sans KR" sans-serif;
+    text-transform: capitalize;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-right: 2px;
+    color: rgb(66, 66, 66);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.time {
+    font-weight: 500;
+    text-align: right;
+}
+
+.commentHeading {
+    text-align: left;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.comment {
+    text-align: left;
+}
+
+.comment-card {
+    box-shadow: 2px 2px 1px rgb(158, 157, 157);
+    margin-top: 1rem;
+}
+
+.replies {
+    text-align: right;
+    color: rgb(74, 74, 250);
+}
+
+.replyDisplay {
+    cursor: pointer;
+}
+
+.ql-editor p img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ql-editor {
+    text-align: justify;
+}
+
+.likes {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-weight: bolder;
+    font-size: large;
+    color: #343a40;
+    text-align: left;
+}

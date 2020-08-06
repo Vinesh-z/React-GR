@@ -1,0 +1,148 @@
+.blogCard {
+    margin: 2rem;
+}
+
+.wrapper-container {
+    width: auto;
+    height: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.wrapper-container::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+/* Track */
+
+.wrapper-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+.wrapper-container::-webkit-scrollbar-thumb {
+    background: #747475;
+    border-radius: 5px;
+}
+
+.jumbo {
+    margin-top: 1rem;
+}
+
+.badge {
+    padding: 0;
+    cursor: pointer;
+    margin-right: 2rem;
+    width: 12rem;
+    height: 6rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.page-item.active .page-link {
+    background-color: #343a40;
+    color: #eee;
+    border-color: rgb(82, 82, 82);
+}
+
+.page-item :hover {
+    background-color: #7e7e7e;
+    color: #eee;
+    border-color: rgb(82, 82, 82);
+}
+
+.page-link {
+    color: black;
+    border-color: rgb(82, 82, 82);
+}
+
+
+/* SearchBox */
+
+.searchBox {
+    position: absolute;
+    top: 3.5%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background: #2f3640;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.searchBox:hover>.searchInput {
+    width: 25rem;
+    padding: 0 6px;
+}
+
+.searchBox:hover>.searchButton {
+    background: #63b3f5;
+    color: #2f3640;
+}
+
+.searchButton {
+    color: white;
+    background: #f15c5c;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+}
+
+.blogHeading {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: 'Gruppo', cursive;
+    text-transform: capitalize;
+}
+
+@media screen and (max-width: 620px) {
+    .searchBox:hover>.searchInput {
+        width: 150px;
+        padding: 0 6px;
+    }
+}
+
+.category-name {
+    font-family: 'Consolas';
+    text-transform: uppercase;
+    color: #eee;
+    font-size: large;
+    font-weight: bold;
+}
+
+.cat-image {
+    filter: brightness(60%);
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: all .5s ease-out 0s
+}
+
+.badge:hover .cat-image {
+    filter: brightness(80%);
+    box-shadow: 10px 10px 3px rgb(158, 157, 157);
+    transition: all .5s ease-out 0s
+}

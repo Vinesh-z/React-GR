@@ -1,0 +1,79 @@
+.uniqueBlog {
+    color: #eee;
+    width: 18rem;
+    height: 20rem;
+}
+
+.uniqueBlog:hover .cover-image,
+.uniqueBlog {
+    filter: brightness(100%);
+    cursor: pointer;
+}
+
+.uniqueBlog:hover {
+    box-shadow: 10px 10px 3px rgb(158, 157, 157);
+    transition: all .5s ease-out 0s
+}
+
+.cardBody {
+    padding-top: 5px;
+    background-color: #343a40;
+}
+
+.cover-image {
+    object-fit: fill;
+    height: 12rem;
+    top: 0;
+    left: 0;
+    filter: brightness(60%);
+    transition: all .5s ease-out 0s
+}
+
+.cover-image:after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    top: 0;
+    left: 0;
+    display: block;
+    content: "";
+}
+
+.cardTitle {
+    margin: 0;
+    text-align: center;
+    font-size: medium;
+    font-family: 'Gruppo', cursive;
+    text-transform: capitalize;
+}
+
+.categoryName {
+    font-family: 'Gruppo', cursive;
+    font-weight: lighter;
+    text-align: center;
+    margin-bottom: 0%;
+    color: #82c3f8;
+}
+
+.created {
+    margin-bottom: 0;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 11px;
+    color: rgb(245, 80, 80);
+}
+
+.read-time {
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.likes-display {
+    text-align: center;
+    float: right;
+    background-color: rgb(245, 46, 46);
+    min-width: 2rem;
+    height: 3.5rem;
+}

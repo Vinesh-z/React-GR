@@ -1,0 +1,21 @@
+.login {
+    font-family: 'Gruppo', cursive;
+    text-align: center;
+}
+
+.formContainer {
+    margin-top: 10%;
+}
+
+.sign-up {
+    cursor: pointer;
+    color: #1669F2;
+}
+
+.sign-up:hover {
+    text-decoration: underline;
+}
+
+.loginForm {
+    max-height: 35rem;
+}

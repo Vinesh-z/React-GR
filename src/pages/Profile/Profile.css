@@ -1,0 +1,75 @@
+.profileContainer {
+    margin-top: 7%;
+}
+
+.profileCard {
+    box-shadow: 7px 7px 3px rgb(158, 157, 157);
+}
+
+.userName {
+    letter-spacing: 2px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #343a40;
+    text-transform: uppercase;
+    font-family: 'Gruppo', cursive;
+}
+
+.emailId {
+    font-size: small;
+    font-weight: 500;
+}
+
+.blogs,
+.followers,
+.following {
+    text-align: center;
+}
+
+.blogCountHeading,
+.followersHeading,
+.followingHeading {
+    letter-spacing: 1px;
+    font-size: large;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Gruppo', cursive;
+}
+
+.blogCountHeading {
+    color: #9575cd;
+}
+
+.followersHeading {
+    color: #00bcd4;
+}
+
+.followingHeading {
+    color: #ff9800;
+}
+
+.blogCount,
+.followersCount,
+.followingCount {
+    font-weight: 700;
+    font-size: larger;
+}
+
+.userProfilePic {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    background-repeat: no-repeat;
+}
+
+.user-avatar {
+    box-shadow: 5px 5px 5px 2px rgb(158, 157, 157);
+    position: relative;
+    top: 15%;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
