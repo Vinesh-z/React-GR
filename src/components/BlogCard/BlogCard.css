@@ -1,7 +1,6 @@
 .uniqueBlog {
     color: #eee;
-    width: 18rem;
-    height: 20rem;
+    height: 22rem;
 }
 
 .uniqueBlog:hover .cover-image,
@@ -15,8 +14,17 @@
     transition: all .5s ease-out 0s
 }
 
+.bottomContent {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
 .cardBody {
+    position: relative;
     padding-top: 5px;
+    overflow-y: hidden;
     background-color: #343a40;
 }
 

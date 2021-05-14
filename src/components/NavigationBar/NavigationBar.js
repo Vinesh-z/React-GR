@@ -24,7 +24,7 @@ export const NavigationBar = () => (
         
         <Styles>
             <Navbar expand="lg">
-                <Navbar.Brand href="/"><img style={{height:"2rem",width:"2rem"}} className="bloggoIcon" src={icon}></img>  BlogGO</Navbar.Brand>
+                <Navbar.Brand href="/"><img style={{height:"2rem",width:"2rem"}} className="bloggoIcon" alt={icon} src={icon}></img>  BlogGO</Navbar.Brand>
             </Navbar>
         </Styles>
     </div>

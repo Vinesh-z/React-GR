@@ -1,5 +1,6 @@
 .blogName {
     font-weight: bold;
+    word-wrap: break-word;
     font-family: 'Gruppo', cursive;
 }
 

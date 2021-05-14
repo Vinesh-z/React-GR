@@ -21,6 +21,16 @@ export default class apiService extends Component {
                 })
         })
     }
+    static editBlog(blog, blogId) {
+        return new Promise((resolve, reject) => {
+            axios.put(`http://localhost:8000/blog/` + blogId, blog)
+                .then(res => {
+                    resolve(res);
+                }).catch(err => {
+                    resolve(err.response);
+                })
+        })
+    }
     static uploadFile(file) {
         return new Promise((resolve, reject) => {
             axios.post(`http://localhost:8000/upload`, file)
@@ -31,7 +41,6 @@ export default class apiService extends Component {
     }
 
     static getBlogs() {
-
         return new Promise((resolve, reject) => {
             authAxios.get(`/blogs`)
                 .then(res => {
@@ -51,6 +60,15 @@ export default class apiService extends Component {
     static likeBlog(userId, blogId) {
         return new Promise((resolve, reject) => {
             axios.post(`http://localhost:8000/like/` + userId + '/' + blogId)
+                .then(res => {
+                    resolve(res.data)
+                })
+        })
+    }
+
+    static deleteBlog(id) {
+        return new Promise((resolve, reject) => {
+            axios.delete(`http://localhost:8000/blog/` + id)
                 .then(res => {
                     resolve(res.data)
                 })
@@ -154,9 +172,9 @@ export default class apiService extends Component {
         return new Promise((resolve, reject) => {
             axios.post(`http://localhost:8000/user`, user)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
                     resolve(res)
+                }).catch(err => {
+                    resolve(err.response);
                 })
         })
     }

@@ -38,21 +38,20 @@ export default class BlogCard extends Component {
                         <div className="likes-display">
                             <i style={{ color: "#eee" }} className={"fa fa-thumbs-up"}></i>
                             <p>{
-                                (this.props.data.likesCount) ? <span style={{fontSize:"0.75rem"}}> {this.kFormatter(this.props.data.likesCount)} </span> : 0
+                                (this.props.data.likesCount) ? <span style={{ fontSize: "0.75rem" }}> {this.kFormatter(this.props.data.likesCount)} </span> : 0
                             }</p>
                         </div>
                     </div>
                     <Card.Img className="cover-image" variant="top" src={imageUrl} />
 
-                    <Card.Body className="cardBody">
-
-                        <p className="categoryName">{this.state.category ? this.state.category.categoryName : ""}</p>
-                        <Card.Title className="cardTitle">{(this.props.data.blogName.length > 50 ? this.props.data.blogName.substring(0, 50) + "..." : this.props.data.blogName.substring(0, 50))}</Card.Title>
-
-                        <p className="created">Published On: {this.state.created}</p>
-
-                        <p className="read-time text-muted">{this.props.data.readTime}</p>
-
+                    <Card.Body className="cardBody p-0">
+                    
+                            <p className="categoryName pt-4 pb-1">{this.state.category ? this.state.category.categoryName : ""}</p>
+                            <Card.Title className="cardTitle">{(this.props.data.blogName.length > 50 ? this.props.data.blogName.substring(0, 50) + "..." : this.props.data.blogName.substring(0, 50))}</Card.Title>
+                            <div className="bottomContent">
+                            <p className="created">Published On: {this.state.created}</p>
+                            <p className="read-time text-muted">{this.props.data.readTime}</p>
+                        </div>
                     </Card.Body>
                 </Card>
             </div>

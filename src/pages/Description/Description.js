@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import apiService from '../../service/apiService'
-import { Container, Form, Button, Card, Row, Col } from 'react-bootstrap';
+import { Container, Form, Button, Card, Row, Col, Modal } from 'react-bootstrap';
 import * as moment from 'moment';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
@@ -10,11 +10,16 @@ import { ToastContainer } from 'react-toastify';
 import toastService from '../../service/toastService'
 export default class Description extends Component {
     state = {};
+
     constructor(props) {
         super(props)
-        this.state = { author: {}, created: '', comment: '', subComment: '', comments: [], ready: false, subComments: [], replies: [], liked: false };
+        this.state = { author: {}, created: '', comment: '', subComment: '', comments: [], ready: false, subComments: [], replies: [], liked: false, deleteConfirmation: false };
     }
 
+    componentDidMount() {
+        this.setState({ blogId: this.props.match.params.blogId });
+        this.getBlog()
+    }
     getComments = () => {
         let subComms = []
         let replies = []
@@ -42,13 +47,8 @@ export default class Description extends Component {
             this.setState({ comments: blogComments })
             this.setState({ subComments: subComms })
             this.setState({ replies: replies })
-            this.setState({ ready: true })
         })
 
-    }
-    componentDidMount() {
-        this.setState({ blogId: this.props.match.params.blogId });
-        this.getBlog()
     }
     getBlog = () => {
         apiService.getBlog(this.props.match.params.blogId).then(blog => {
@@ -75,6 +75,8 @@ export default class Description extends Component {
     getCategory = () => {
         apiService.getCategory(this.state.blog.categoryID).then(category => {
             this.setState({ category: category })
+
+            this.setState({ ready: true })
         })
     }
     handleInputChange = event => {
@@ -129,6 +131,25 @@ export default class Description extends Component {
         })
     }
 
+    handleClose = () => {
+        this.setState({ deleteConfirmation: false });
+    }
+
+    handleDelete = () => {
+        this.setState({ deleteConfirmation: true });
+    }
+
+    handleEdit = () => {
+        this.props.history.push('../edit/' + this.state.blogId);
+    }
+    deleteBlog = () => {
+        this.setState({ deleteConfirmation: false });
+        apiService.deleteBlog(this.state.blogId).then(data => {
+            toastService.createToast("Blog deleted successfully!!", "success");
+            this.props.history.push('../home');
+        })
+    }
+
     like = () => {
         apiService.likeBlog("5ed54d1e4e5707265c6f1024", this.state.blog._id).then(data => {
             let blog = this.state.blog
@@ -145,6 +166,7 @@ export default class Description extends Component {
     render() {
         const isEnabled = this.state.comment.trim().length > 0
         return (
+            <div style={{ marginLeft: "6rem", marginRight: "2rem" }}>
             <Container>
                 <div>
                     <ToastContainer
@@ -152,11 +174,18 @@ export default class Description extends Component {
                     ></ToastContainer>
                     {this.state.ready ? (
                         <div className="blogDetails">
-                            <h1 className="blogName">{this.state.blog.blogName}</h1>
+                            <h1 className="blogName">{this.state.blog.blogName}
+                                <Button style={{ marginLeft: "1rem" }} size="sm" variant="primary" type="button" onClick={this.handleEdit}>
+                                    <i style={{ color: "white" }} className={"fa fa-pencil"}></i>
+                                </Button>
+                                <Button style={{ marginLeft: "1rem" }} size="sm" variant="danger" type="button" onClick={this.handleDelete}>
+                                    <i style={{ color: "white" }} className={"fa fa-trash"}></i>
+                                </Button>
+                            </h1>
                             <div>
                                 <small className="catName">{this.state.category.categoryName}</small>
                                 <img className="display-image" src={this.state.imageURL} alt="cover-img"></img>
-                                <small className="authorName">By <Link to={`../profile/${this.state.author._id}`}><span style={{color:"#343a40", cursor: "pointer" }}>{this.state.author.name} </span></Link>| Published on: {this.state.created} | {this.state.blog.readTime}</small>
+                                <small className="authorName">By <Link to={`../profile/${this.state.author._id}`}><span style={{ color: "#343a40", cursor: "pointer" }}>{this.state.author.name} </span></Link>| Published on: {this.state.created} | {this.state.blog.readTime}</small>
                                 <hr></hr>
                                 <ReactQuill
                                     className="content"
@@ -276,7 +305,22 @@ export default class Description extends Component {
                         </div>
                     ) : (<p>No Blog Found </p>)}
                 </div>
+                <Modal show={this.state.deleteConfirmation} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Delete Blog?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>The blog will be permenantly deleted, are you sure to delete?</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="danger" onClick={this.handleClose}>
+                            Cancel
+                        </Button>
+                        <Button variant="primary" onClick={this.deleteBlog}>
+                            Delete
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Container >
+            </div>
         )
     }
 }

@@ -28,6 +28,11 @@ export default class Sidebar extends Component {
                 title: 'About',
                 route: '/about',
                 icon: 'info-circle'
+            },
+            {
+                title: 'Logout',
+                route: '/logout',
+                icon: 'sign-out'
             }
         ]
     }
@@ -50,10 +55,10 @@ export default class Sidebar extends Component {
                                         <Link to={item.route}>
                                             <a className="menu-link" onClick={this.onClickHandler}>
                                                 <div className="row">
-                                                    <div className="col-md-2 p-2 pl-3">
+                                                    <div className="col-md-2 col-2 p-2 pl-3">
                                                         <span className="icon"><i className={"fa fa-" + item.icon}></i></span>
                                                     </div>
-                                                    <div className="col-md-10 pt-2 pl-3">
+                                                    <div className="col-md-10 col-10 pt-2 pl-3">
                                                         <span className="title">{item.title}</span>
                                                     </div>
                                                 </div>

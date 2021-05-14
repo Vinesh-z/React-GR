@@ -16,6 +16,7 @@ import MyBlogs from './pages/MyBlogs/MyBlogs';
 import Profile from './pages/Profile/Profile';
 import Followers from './pages/Followers/Followers';
 import Following from './pages/Following/Following';
+import EditBlog from './pages/EditBlog/EditBlog';
 
 
 class App extends Component {
@@ -28,6 +29,8 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/edit/:blogId" component={EditBlog} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/profile/:userId" component={Profile} />

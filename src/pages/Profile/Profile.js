@@ -87,100 +87,102 @@ export default class Profile extends Component {
     }
     render() {
         return (
-            <Container>
-                <div className="profileContainer">
-                    <Card className="profileCard">
-                        <Row>
-                            <Col style={{ textAlign: "center" }}>
-                                {
-                                    (this.state.user.profile) ? <Image className="user-avatar" src={require('../../assets/' + this.state.user.profile + '.png')} roundedCircle /> : ""}</Col>
-                            <Col>
-                                <Card.Body>
-                                    <div style={{ textAlign: "center" }} className='userName'>
-                                        <p>{this.state.user.name}
-                                            {(this.state.gender === "male") ? <i style={{ color: "#2196f3", marginLeft: "10px" }} className="fa fa-mars"></i> : ""}
-                                            {(this.state.gender === "female") ? <i style={{ color: "#ec407a", marginLeft: "10px" }} className="fa fa-venus"></i> : ""}
-                                        </p>
-                                    </div>
-                                    <div style={{ textAlign: "center" }} className='emailId'>
-                                        <p className='text-muted'>{this.state.user.emailID}</p>
-                                    </div>
-                                    <div style={{ marginBottom: "1rem", marginTop: "3rem" }}>
-                                        <div style={{ padding: "0%" }}>
-                                            <Row>
-                                                <Col className="blogs" md={4} sm={4}>
-                                                    <p className="blogCountHeading">Blogs</p>
-                                                    <p className="blogCount text-muted">{this.state.blogCount}</p>
-                                                </Col>
-                                                <Col style={{ cursor: 'pointer' }} className="followers" md={4} sm={4}>
-                                                    <Link style={{ textDecoration: "none" }} to={`../followers/${this.state.userId}`}>
-                                                        <p className="followersHeading">Followers</p>
-                                                        <p className="followersCount text-muted">{this.state.followersCount}</p></Link>
-                                                </Col>
-                                                <Col style={{ cursor: 'pointer' }} className="following" md={4} sm={4}>
-                                                    <Link style={{ textDecoration: "none" }} to={`../following/${this.state.userId}`}>
-                                                        <p className="followingHeading">Following</p>
-                                                        <p className="followingCount text-muted">{this.state.followingCount}</p>
-                                                    </Link>
-                                                </Col>
-                                            </Row>
-                                        </div>
-                                    </div>
+            <div style={{ marginLeft: "6rem", marginRight: "2rem" }}>
+                <Container>
+                    <div className="profileContainer">
+                        <Card className="profileCard">
+                            <Row>
+                                <Col style={{ textAlign: "center" }}>
                                     {
-                                        (!this.state.sameUser) ?
-                                            (
-                                                (!this.state.following) ?
-                                                    <div style={{ textAlign: "center" }}>
-                                                        <Button style={{ width: "7rem" }} size="sm" variant="outline-primary" type="button" onClick={() => { this.follow() }}>
-                                                            <i style={{ color: "rgb(104, 104, 850)", marginRight: "5px" }} className={"fa fa-plus"}></i>
+                                        (this.state.user.profile) ? <Image className="user-avatar" src={require('../../assets/' + this.state.user.profile + '.png')} roundedCircle /> : ""}</Col>
+                                <Col>
+                                    <Card.Body>
+                                        <div style={{ textAlign: "center" }} className='userName'>
+                                            <p>{this.state.user.name}
+                                                {(this.state.gender === "male") ? <i style={{ color: "#2196f3", marginLeft: "10px" }} className="fa fa-mars"></i> : ""}
+                                                {(this.state.gender === "female") ? <i style={{ color: "#ec407a", marginLeft: "10px" }} className="fa fa-venus"></i> : ""}
+                                            </p>
+                                        </div>
+                                        <div style={{ textAlign: "center" }} className='emailId'>
+                                            <p className='text-muted'>{this.state.user.emailID}</p>
+                                        </div>
+                                        <div style={{ marginBottom: "1rem", marginTop: "3rem" }}>
+                                            <div style={{ padding: "0%" }}>
+                                                <Row>
+                                                    <Col className="blogs" md={4} sm={4}>
+                                                        <p className="blogCountHeading">Blogs</p>
+                                                        <p className="blogCount text-muted">{this.state.blogCount}</p>
+                                                    </Col>
+                                                    <Col style={{ cursor: 'pointer' }} className="followers" md={4} sm={4}>
+                                                        <Link style={{ textDecoration: "none" }} to={`../followers/${this.state.userId}`}>
+                                                            <p className="followersHeading">Followers</p>
+                                                            <p className="followersCount text-muted">{this.state.followersCount}</p></Link>
+                                                    </Col>
+                                                    <Col style={{ cursor: 'pointer' }} className="following" md={4} sm={4}>
+                                                        <Link style={{ textDecoration: "none" }} to={`../following/${this.state.userId}`}>
+                                                            <p className="followingHeading">Following</p>
+                                                            <p className="followingCount text-muted">{this.state.followingCount}</p>
+                                                        </Link>
+                                                    </Col>
+                                                </Row>
+                                            </div>
+                                        </div>
+                                        {
+                                            (!this.state.sameUser) ?
+                                                (
+                                                    (!this.state.following) ?
+                                                        <div style={{ textAlign: "center" }}>
+                                                            <Button style={{ width: "7rem" }} size="sm" variant="outline-primary" type="button" onClick={() => { this.follow() }}>
+                                                                <i style={{ color: "rgb(104, 104, 850)", marginRight: "5px" }} className={"fa fa-plus"}></i>
                                                 Follow</Button></div> :
-                                                    <div style={{ textAlign: "center" }}> <Button style={{ width: "7rem" }} size="sm" variant="primary" type="button" onClick={() => { this.follow() }}>
-                                                        <i style={{ color: "#eee", marginRight: "5px" }} className={"fa fa-check"}></i>
+                                                        <div style={{ textAlign: "center" }}> <Button style={{ width: "7rem" }} size="sm" variant="primary" type="button" onClick={() => { this.follow() }}>
+                                                            <i style={{ color: "#eee", marginRight: "5px" }} className={"fa fa-check"}></i>
                                                 Following
                                             </Button></div>
-                                            ) : ""
-                                    }
-                                </Card.Body>
-                            </Col>
-                        </Row>
-                    </Card>
-                    {
-                        (this.state.pages > 0) ?
-                            <div>
-                                <Row>
-                                    {this.state.blogs?.map((blog) => {
-                                        return (
-                                            <Col md={3} sm={6} key={blog._id} className="blogCard"> <Link style={{ textDecoration: "none" }} to={`../describe/${blog._id}`}> <BlogCard data={blog} /></Link></Col>
-                                        )
-                                    })
-                                    }</Row> </div> : ""
-                    }
-                    {
-                        (this.state.displayPages > 1) ?
-                            <div style={{ marginLeft: "40%" }}>
-                                <Pagination>
-                                    <Pagination.First onClick={() => { this.pagination(1) }} />
-                                    {
-                                        (this.state.active > 1) ? <Pagination.Prev onClick={() => { this.pagination(this.state.active - 1) }} /> : ""
-                                    }
-
-                                    {
-                                        this.state.displayPages.map((item) => {
+                                                ) : ""
+                                        }
+                                    </Card.Body>
+                                </Col>
+                            </Row>
+                        </Card>
+                        {
+                            (this.state.pages > 0) ?
+                                <div>
+                                    <Row className="mt-5">
+                                        {this.state.blogs?.map((blog) => {
                                             return (
-                                                <Pagination.Item key={item} onClick={() => { this.pagination(item) }} active={item === this.state.active}>{item}</Pagination.Item>
+                                                <Col md={3} sm={6} key={blog._id} className="blogCard"> <Link style={{ textDecoration: "none" }} to={`../describe/${blog._id}`}> <BlogCard data={blog} /></Link></Col>
                                             )
                                         })
-                                    }
-                                    {
-                                        (this.state.active < this.state.pages) ? <Pagination.Next onClick={() => { this.pagination(this.state.active + 1) }} /> : ""
-                                    }
-                                    <Pagination.Last onClick={() => { this.pagination(this.state.pages) }} />
-                                </Pagination>
-                            </div>
-                            : ""
-                    }
-                </div>
-            </Container>
+                                        }</Row> </div> : ""
+                        }
+                        {
+                            (this.state.displayPages > 1) ?
+                                <div style={{ marginLeft: "40%" }}>
+                                    <Pagination>
+                                        <Pagination.First onClick={() => { this.pagination(1) }} />
+                                        {
+                                            (this.state.active > 1) ? <Pagination.Prev onClick={() => { this.pagination(this.state.active - 1) }} /> : ""
+                                        }
+
+                                        {
+                                            this.state.displayPages.map((item) => {
+                                                return (
+                                                    <Pagination.Item key={item} onClick={() => { this.pagination(item) }} active={item === this.state.active}>{item}</Pagination.Item>
+                                                )
+                                            })
+                                        }
+                                        {
+                                            (this.state.active < this.state.pages) ? <Pagination.Next onClick={() => { this.pagination(this.state.active + 1) }} /> : ""
+                                        }
+                                        <Pagination.Last onClick={() => { this.pagination(this.state.pages) }} />
+                                    </Pagination>
+                                </div>
+                                : ""
+                        }
+                    </div>
+                </Container>
+            </div>
         )
     }
 }

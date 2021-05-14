@@ -33,7 +33,7 @@ export default class Login extends Component {
                     <h1 className="login">LOGIN</h1>
                     <Card>
                         <Row>
-                            <Col><img className="loginForm" src={blog}></img></Col>
+                            <Col><img className="loginForm" src={blog} alt='loginImg'></img></Col>
                             <Col>
                                 <Card.Body>
                                     <div style={{ textAlign: "center" }} className='social-login mb-2'>

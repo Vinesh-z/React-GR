@@ -11,36 +11,48 @@ import { Link } from 'react-router-dom';
 
 export default class Register extends Component {
     state = {
-        startDate: new Date(), avatar: 'default'
+        startDate: new Date(), avatar: 'default', gender: 'Male'
     };
     register = () => {
         const User = {
-            "name": "teast1",
-            "emailID": "test@gmail.com",
-            "password": "123",
-            "gender": "male",
-            "profile":this.state.avatar,
+            "name": this.state.name,
+            "emailID": this.state.emailId,
+            "password": this.state.password,
+            "gender": this.state.gender,
+            "profile": this.state.avatar,
             "dob": this.state.startDate
         }
         apiService.addUser(User).then(data => {
-            console.log(data.status)
+            console.log(data.status);
             if (data.status === 409) {
                 toastService.createToast("User already exists", "error");
-            } else if (data.status === 200) {
+            } else if (data.status === 201) {
                 toastService.createToast("Registration completed successfully!!", "success");
             } else {
                 toastService.createToast("Some error occured, please try again later", "error");
             }
         })
     }
+
     avatarSelect = (avatar) => {
         this.setState({ avatar: avatar })
+    };
+
+    handleInputChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    };
+    selectGender = event => {
+        this.setState({ gender: event.target.name })
+        console.log(event.target.name);
     }
     handleChange = date => {
         this.setState({
             startDate: date
         });
     };
+
     render() {
 
         const avatars = ['man1', 'man2', 'man3', 'man4', 'man5', 'man6', 'man7', 'woman1', 'woman2', 'woman3', 'woman4', 'default']
@@ -75,30 +87,35 @@ export default class Register extends Component {
                                                 />
                                             </Col>
 
-                                            <Col sm={6} style={{ marginTop: "2.5rem",float: "right" }}>
-                                                <span style={{marginRight: "4rem" }} as="legend" >
+                                            <Col sm={6} style={{ marginTop: "2.5rem", float: "right" }}>
+                                                <span style={{ marginRight: "4rem" }} as="legend" >
                                                     Gender:
                                         </span>
                                                 <span >
                                                     <Form.Check inline
-
+                                                        onChange={this.selectGender}
+                                                        checked={this.state.gender === 'Male'}
                                                         type="radio"
                                                         label="Male"
-                                                        name="formHorizontalRadios"
+                                                        name="Male"
                                                         id="formHorizontalRadios1"
                                                     />
                                                     <Form.Check inline
 
+                                                        onChange={this.selectGender}
+                                                        checked={this.state.gender === 'Female'}
                                                         type="radio"
                                                         label="Female"
-                                                        name="formHorizontalRadios"
+                                                        name="Female"
                                                         id="formHorizontalRadios2"
                                                     />
                                                     <Form.Check inline
 
+                                                        onChange={this.selectGender}
+                                                        checked={this.state.gender === 'Other'}
                                                         type="radio"
                                                         label="Other"
-                                                        name="formHorizontalRadios"
+                                                        name="Other"
                                                         id="formHorizontalRadios3"
                                                     />
                                                 </span>
